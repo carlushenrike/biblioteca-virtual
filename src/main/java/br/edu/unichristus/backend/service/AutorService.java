@@ -2,9 +2,9 @@ package br.edu.unichristus.backend.service;
 
 import br.edu.unichristus.backend.domain.dto.AutorDTO;
 import br.edu.unichristus.backend.domain.dto.AutorLowDTO;
-import br.edu.unichristus.backend.domain.model.Author;
+import br.edu.unichristus.backend.domain.model.Autor;
 import br.edu.unichristus.backend.exception.ApiException;
-import br.edu.unichristus.backend.repository.AuthorRepository;
+import br.edu.unichristus.backend.repository.AutorRepository;
 import br.edu.unichristus.backend.util.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 public class AutorService {
 
     @Autowired
-    private AuthorRepository repository;
+    private AutorRepository repository;
 
     // CREATE
     public AutorDTO create(AutorDTO dto){
@@ -31,7 +31,7 @@ public class AutorService {
                     "O limite de caracteres do nome do autor é 100");
         }
 
-        var autor = MapperUtil.parseObject(dto, Author.class);
+        var autor = MapperUtil.parseObject(dto, Autor.class);
         var autorPersistido = repository.save(autor);
 
         return MapperUtil.parseObject(autorPersistido, AutorDTO.class);
@@ -45,10 +45,9 @@ public class AutorService {
 
     // UPDATE
     public AutorDTO update(AutorDTO dto){
-        // Verifica se o id existe antes de atualizar
         findAutorById(dto.getId());
 
-        var autor = MapperUtil.parseObject(dto, Author.class);
+        var autor = MapperUtil.parseObject(dto, Autor.class);
         var autorPersistido = repository.save(autor);
         return MapperUtil.parseObject(autorPersistido, AutorDTO.class);
     }

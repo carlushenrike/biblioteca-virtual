@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "livro_id", nullable = false)
-    private Book book;
+    private Livro book;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -82,11 +82,11 @@ public class Review {
         this.dataPostagem = dataPostagem;
     }
 
-    public Book getLivro() {
+    public Livro getLivro() {
         return book;
     }
 
-    public void setLivro(Book book) {
+    public void setLivro(Livro book) {
         this.book = book;
     }
 

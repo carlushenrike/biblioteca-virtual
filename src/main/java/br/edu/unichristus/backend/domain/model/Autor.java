@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Author {
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

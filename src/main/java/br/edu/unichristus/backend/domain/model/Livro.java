@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +38,11 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.LAZY) // Muitos livros para uma categoria
     @JoinColumn(name = "categoria_id", nullable = false)
-    private Category category;
+    private Categoria category;
 
     @ManyToOne(fetch = FetchType.LAZY) // Muitos livros para uma editora
     @JoinColumn(name = "editora_id", nullable = false)
-    private Publisher publisher;
+    private Editora publisher;
 
     @ManyToMany // Muitos livros para muitos autores
     @JoinTable(
@@ -50,7 +50,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "livro_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
-    private Set<Author> autores = new HashSet<>();
+    private Set<Autor> autores = new HashSet<>();
 
 
     // getters & setters
@@ -102,27 +102,27 @@ public class Book {
         this.sinopse = sinopse;
     }
 
-    public Category getCategoria() {
+    public Categoria getCategoria() {
         return category;
     }
 
-    public void setCategoria(Category category) {
+    public void setCategoria(Categoria category) {
         this.category = category;
     }
 
-    public Publisher getEditora() {
+    public Editora getEditora() {
         return publisher;
     }
 
-    public void setEditora(Publisher publisher) {
+    public void setEditora(Editora publisher) {
         this.publisher = publisher;
     }
 
-    public Set<Author> getAutores() {
+    public Set<Autor> getAutores() {
         return autores;
     }
 
-    public void setAutores(Set<Author> autores) {
+    public void setAutores(Set<Autor> autores) {
         this.autores = autores;
     }
 }

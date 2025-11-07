@@ -33,16 +33,19 @@ public class UserController {
         return service.create(user);
     }
 
+    @Operation(summary = "Retorna todos os usuários cadastrados",tags = "User")
     @GetMapping("/all")
     public List<UserLowDTO> getAll(){
         return service.getAll();
     }
 
+    @Operation(summary = "Atualiza dados de um usuário", tags = "User")
     @PutMapping
     public UserDTO update(@RequestBody UserDTO user){
         return service.update(user);
     }
 
+    @Operation(summary = "Deleta um user baseado no ID", tags = "User")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable(name = "id") Long id){
         service.deleteUserById(id);
