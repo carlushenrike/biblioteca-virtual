@@ -104,12 +104,18 @@ public class ComentarioService {
     }
 
     // READ BY ID
-    public ComentarioLowDTO findComentarioById(Long id) {
+    public ComentarioDTO findComentarioById(Long id) {
         var comentario = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.comentario.notfound",
                         "O comentário com o id informado não foi encontrado")
         );
-        return MapperUtil.parseObject(comentario, ComentarioLowDTO.class);
+
+        var dto = MapperUtil.parseObject(comentario, ComentarioDTO.class);
+
+        dto.setLivroId(comentario.getLivro().getId());
+        dto.setUserId(comentario.getUsuario().getId());
+
+        return dto;
     }
 }

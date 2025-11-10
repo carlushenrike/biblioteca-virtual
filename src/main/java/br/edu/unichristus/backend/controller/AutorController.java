@@ -68,7 +68,7 @@ public class AutorController {
                     ))
     })
     @GetMapping("/{id}")
-    public AutorLowDTO findById(@PathVariable(name = "id") Long id){
+    public AutorDTO findById(@PathVariable(name = "id") Long id){
         return service.findAutorById(id);
     }
 }

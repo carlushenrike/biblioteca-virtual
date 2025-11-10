@@ -59,12 +59,12 @@ public class AutorService {
     }
 
     // READ BY ID
-    public AutorLowDTO findAutorById(Long id){
+    public AutorDTO findAutorById(Long id){
         var autor = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.autor.notfound",
                         "O autor com o id informado não foi encontrado")
         );
-        return MapperUtil.parseObject(autor, AutorLowDTO.class);
+        return MapperUtil.parseObject(autor, AutorDTO.class);
     }
 }

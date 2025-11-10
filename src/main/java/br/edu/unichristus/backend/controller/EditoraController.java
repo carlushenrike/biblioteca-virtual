@@ -61,7 +61,7 @@ public class EditoraController {
                     ))
     })
     @GetMapping("/{id}")
-    public EditoraLowDTO findById(@PathVariable(name = "id") Long id){
+    public EditoraDTO findById(@PathVariable(name = "id") Long id){
         return service.findEditoraById(id);
     }
 }

@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.stream.Collectors;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -118,12 +119,22 @@ public class LivroService {
     }
 
     // READ BY ID
-    public LivroLowDTO findLivroById(Long id) {
+    public LivroDTO findLivroById(Long id) {
         var livro = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.livro.notfound",
                         "O livro com o id informado não foi encontrado")
         );
-        return MapperUtil.parseObject(livro, LivroLowDTO.class);
+
+        var dto = MapperUtil.parseObject(livro, LivroDTO.class);
+        dto.setCategoriaId(livro.getCategoria().getId());
+        dto.setEditoraId(livro.getEditora().getId());
+        dto.setAutorIds(
+                livro.getAutores().stream()
+                        .map(autor -> autor.getId())
+                        .collect(Collectors.toSet())
+        );
+
+        return dto;
     }
 }

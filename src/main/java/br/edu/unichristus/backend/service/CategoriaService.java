@@ -60,12 +60,12 @@ public class CategoriaService {
     }
 
     // READ BY ID
-    public CategoriaLowDTO findCategoriaById(Long id){
+    public CategoriaDTO findCategoriaById(Long id){
         var categoria = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.categoria.notfound",
                         "A categoria com o id informado não foi encontrada")
         );
-        return MapperUtil.parseObject(categoria, CategoriaLowDTO.class);
+        return MapperUtil.parseObject(categoria, CategoriaDTO.class);
     }
 }

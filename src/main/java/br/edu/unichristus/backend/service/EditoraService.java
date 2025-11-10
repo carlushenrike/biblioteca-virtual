@@ -60,12 +60,12 @@ public class EditoraService {
     }
 
     // READ BY ID
-    public EditoraLowDTO findEditoraById(Long id){
+    public EditoraDTO findEditoraById(Long id){
         var editora = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.editora.notfound",
                         "A editora com o id informado não foi encontrada")
         );
-        return MapperUtil.parseObject(editora, EditoraLowDTO.class);
+        return MapperUtil.parseObject(editora, EditoraDTO.class);
     }
 }

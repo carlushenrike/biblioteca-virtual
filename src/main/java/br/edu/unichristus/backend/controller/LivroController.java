@@ -62,7 +62,7 @@ public class LivroController {
                     ))
     })
     @GetMapping("/{id}")
-    public LivroLowDTO findById(@PathVariable(name = "id") Long id){
+    public LivroDTO findById(@PathVariable(name = "id") Long id){
         return service.findLivroById(id);
     }
 }

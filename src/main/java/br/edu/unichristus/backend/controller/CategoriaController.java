@@ -61,7 +61,7 @@ public class CategoriaController {
                     ))
     })
     @GetMapping("/{id}")
-    public CategoriaLowDTO findById(@PathVariable(name = "id") Long id){
+    public CategoriaDTO findById(@PathVariable(name = "id") Long id){
         return service.findCategoriaById(id);
     }
 }

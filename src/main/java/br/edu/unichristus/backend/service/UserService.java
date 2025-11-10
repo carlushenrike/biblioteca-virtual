@@ -51,12 +51,12 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public UserLowDTO findUserById(Long id){
+    public UserDTO findUserById(Long id){
         var user = repository.findById(id).orElseThrow(
                 () -> new ApiException(HttpStatus.NOT_FOUND,
                         "unichristus.service.user.notfound",
                         "O usuário com o id informado não foi encontrado")
         );
-        return MapperUtil.parseObject(user, UserLowDTO.class);
+        return MapperUtil.parseObject(user, UserDTO.class);
     }
 }

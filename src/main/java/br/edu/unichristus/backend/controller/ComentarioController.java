@@ -62,7 +62,7 @@ public class ComentarioController {
                     ))
     })
     @GetMapping("/{id}")
-    public ComentarioLowDTO findById(@PathVariable(name = "id") Long id){ // <-- MUDANÇA AQUI
+    public ComentarioDTO findById(@PathVariable(name = "id") Long id){ // <-- MUDANÇA AQUI
         return service.findComentarioById(id);
     }
 }
