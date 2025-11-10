@@ -42,7 +42,7 @@ CREATE TABLE public.tb_livro_autor (
 	livro_id int8 NOT NULL,
 	autor_id int8 NOT NULL,
 	CONSTRAINT tb_livro_autor_pkey PRIMARY KEY (livro_id, autor_id),
-	CONSTRAINT fk_livro_autor_livro FOREIGN KEY (livro_id) REFERENCES public.tb_livro(id),
+	CONSTRAINT fk_livro_autor_livro FOREIGN KEY (livro_id) REFERENCES public.tb_livro(id) ON DELETE CASCADE,
 	CONSTRAINT fk_livro_autor_autor FOREIGN KEY (autor_id) REFERENCES public.tb_autor(id)
 );
 
@@ -56,6 +56,6 @@ CREATE TABLE public.tb_comentario (
 	livro_id int8 NOT NULL,
 	user_id int8 NOT NULL,
 	CONSTRAINT tb_comentario_pkey PRIMARY KEY (id),
-	CONSTRAINT fk_comentario_livro FOREIGN KEY (livro_id) REFERENCES public.tb_livro(id),
+	CONSTRAINT fk_comentario_livro FOREIGN KEY (livro_id) REFERENCES public.tb_livro(id) ON DELETE CASCADE,
 	CONSTRAINT fk_comentario_user FOREIGN KEY (user_id) REFERENCES public.tb_user(id)
 );
